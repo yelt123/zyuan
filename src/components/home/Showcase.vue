@@ -5,9 +5,11 @@
       <span class="Health col-6" @click="changePage('Health')">疾病与健康</span>
     </div>
     <div class="exhibition-area animate__animated animate__slideInLeft" key="Recommend" v-if="show">
-      <div :showList="showList" v-for="item in showList" :key="item">1</div>
+      <div :showList="showList" v-for="item in showList" :key="item">展示块</div>
     </div>
-    <div class="exhibition-area animate__animated animate__slideInRight" key="Health" v-else>展示区2</div>
+    <div class="exhibition-area animate__animated animate__slideInRight" key="Health" v-else>
+      <div :showList="showList" v-for="item in showList" :key="item">展示块2</div>
+    </div>
   </div>
 </template>
 
@@ -44,16 +46,17 @@ export default {
 .showcase {
   width: 100%;
   height: 16rem;
-  margin-bottom: 1rem;
+  padding-bottom: 1rem;
   overflow: hidden;
   white-space: nowrap;
   box-sizing: content-box;
-  background-color: #fff;
 }
 .introduce {
   height: 3rem;
   line-height: 3rem;
   display: flex;
+  margin-bottom: .8rem;
+  background-color: #fff;
 }
 /* .introduce::after {//下划线
   content: "-";
@@ -63,7 +66,7 @@ export default {
 } */
 .exhibition-area {
   height: 13rem;
-  background-color: rgba(65, 5, 12, 0.1);
+  /* background-color: rgba(65, 5, 12, 0.1); */
 }
 
 .introduce span {
@@ -73,5 +76,11 @@ export default {
 }
 .animate__animated {
   --animate-duration: 0.3s;
+}
+.exhibition-area div {
+  width: 100%;
+  height: 6rem;
+  margin: 0.4rem 0;
+  background-color: #fff;
 }
 </style>

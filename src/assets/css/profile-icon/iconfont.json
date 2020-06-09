@@ -1,0 +1,58 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "554162",
+      "name": "菜单",
+      "font_class": "iconset0193",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "1110401",
+      "name": "爱心",
+      "font_class": "aixin",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "1400872",
+      "name": "已完成",
+      "font_class": "yiwancheng",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "2681681",
+      "name": "待发货",
+      "font_class": "daifahuo",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "9452570",
+      "name": "钱包",
+      "font_class": "qianbao-",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "10149983",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "14708465",
+      "name": "待收货",
+      "font_class": "daishouhuo",
+      "unicode": "e6c8",
+      "unicode_decimal": 59080
+    }
+  ]
+}

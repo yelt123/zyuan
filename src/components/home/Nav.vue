@@ -8,12 +8,19 @@
       <div class="iconfont icon-ren111"></div>
       <div>商务中心</div>
     </router-link>
-    <router-link to="/Cart" tag="div">
+    <router-link class="Cart" to="/Cart" tag="div">
       <div class="iconfont icon-gouwuche"></div>
       <div>购物车</div>
     </router-link>
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    onClick () {}
+  }
+}
+</script>
 <style scoped>
 @import "../../assets/css/home-icon/iconfont.css";
 .nav {
@@ -31,10 +38,9 @@
   font-size: 1rem;
   color: #323232;
   background-color: #fff;
-  /* background-color: red; */
   padding-top: 1rem;
 }
-.nav > div.active {
+.nav > div.router-link-exact-active  {
   color: red;
 }
 </style>

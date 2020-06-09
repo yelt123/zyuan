@@ -34,6 +34,6 @@ export default {
   width: 100%;
   bottom: 0;
   height: 100%;
-  background-color: rgba(39, 137, 167, 0.1);
+  background-color: rgba(94, 84, 69, 0.1);
 }
 </style>
