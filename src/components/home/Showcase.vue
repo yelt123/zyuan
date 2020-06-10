@@ -15,7 +15,8 @@
 
 <script>
 import 'animate.css'
-import services from '@/services/getData.js'
+import getData from '@/services/getData.js'
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -24,18 +25,32 @@ export default {
     }
   },
   created () {
-    const data = services.getData(
-      'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticle'
-    )
-    console.log(data)
-    // console.log(services.getData('../../assets/data/MallData.json'))
+    axios({
+      url:
+        'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticleInfo',
+      data: { type: 2, page: 1, limit: 5 },
+      method: 'post'
+    }).then(res => {
+      console.log(res.data)
+      return res.data
+    })
   },
   methods: {
     changePage (data) {
       if (data === 'Health') {
         this.show = false
+        const res = getData.getData(
+          'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticleInfo',
+          { data: { type: 2, page: 1, limit: 5 }, method: 'post' }
+        )
+        console.log(res)
       } else {
         this.show = true
+        const res = getData.getData(
+          'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticleInfo',
+          { data: { type: 1, page: 1, limit: 5 }, method: 'post' }
+        )
+        console.log(res)
       }
     }
   }
@@ -55,7 +70,7 @@ export default {
   height: 3rem;
   line-height: 3rem;
   display: flex;
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
   background-color: #fff;
 }
 /* .introduce::after {//下划线
