@@ -1,17 +1,18 @@
 <template>
   <div class="defaultPage">
-    <home />
+    <router-view />
+    <bottom-nav />
   </div>
 </template>
 <script>
 import home from '@/layout/Home'
-
+import bottomNav from '@/components/home/Nav'
 export default {
   components: {
-    home
+    home,
+    bottomNav
   }
 }
 </script>
 <style scoped>
-
 </style>

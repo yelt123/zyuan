@@ -1,7 +1,6 @@
 <template>
   <div class="contain">
     <search />
-
     <div class="center">
       <carousel />
       <showcase />

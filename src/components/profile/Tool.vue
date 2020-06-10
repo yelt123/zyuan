@@ -2,7 +2,13 @@
   <div class="tool">
     <div class="tool-head">我的工具</div>
     <div class="tool-box">
-      <div class="tool-item" v-for="item in toolList" @click="changePage(item.name)" :key="item.id">
+      <div
+        class="tool-item"
+        v-for="item in toolList"
+        @click="changePage(item.name)"
+
+        :key="item.id"
+      >
         <img :src="item.src" />
         <div class="title">{{item.title}}</div>
       </div>
@@ -10,7 +16,7 @@
   </div>
 </template>
 <script>
-import {changePage} from '@/assets/js/changePage.js'
+import { changePage } from '@/assets/js/changePage.js'
 export default {
   beforeMount () {
     // console.log(changePage)

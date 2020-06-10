@@ -27,7 +27,7 @@ export default {
   created () {
     axios({
       url:
-        'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticleInfo',
+        'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticle',
       data: { type: 2, page: 1, limit: 5 },
       method: 'post'
     }).then(res => {
@@ -40,14 +40,14 @@ export default {
       if (data === 'Health') {
         this.show = false
         const res = getData.getData(
-          'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticleInfo',
+          'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticle',
           { data: { type: 2, page: 1, limit: 5 }, method: 'post' }
         )
         console.log(res)
       } else {
         this.show = true
         const res = getData.getData(
-          'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticleInfo',
+          'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticle',
           { data: { type: 1, page: 1, limit: 5 }, method: 'post' }
         )
         console.log(res)

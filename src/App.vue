@@ -1,16 +1,15 @@
 <template>
   <div id="app">
-    <router-view />
-    <bottomNav />
+    <default-page />
   </div>
 </template>
 
 <script>
-import bottomNav from '@/components/home/Nav'
+import defaultPage from '@/layout/Default'
 export default {
   name: 'App',
   components: {
-    bottomNav
+    defaultPage
   },
   created () {}
 }
