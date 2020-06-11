@@ -1,56 +1,64 @@
 <template>
   <div class="showcase">
     <div class="introduce container">
-      <span class="Recommend col-6" @click="changePage('Recommend')">企业简介</span>
-      <span class="Health col-6" @click="changePage('Health')">疾病与健康</span>
+      <span class="Recommend col-6" @click.passive="changePage('Recommend')">企业简介</span>
+      <span class="Health col-6" @click.passive="changePage('Health')">疾病与健康</span>
     </div>
-    <div class="exhibition-area animate__animated animate__slideInLeft" key="Recommend" v-if="show">
-      <div :showList="showList" v-for="item in showList" :key="item">展示块</div>
-    </div>
-    <div class="exhibition-area animate__animated animate__slideInRight" key="Health" v-else>
-      <div :showList="showList" v-for="item in showList" :key="item">展示块2</div>
-    </div>
+    <template>
+      <div class="exhibition-area animate__animated animate__slideInLeft" v-if="show">
+        <div class="item" :showList="showList" v-for="item in showList" :key="item.id">
+          <show-item :baseURL="baseURL" :item="item" />
+        </div>
+      </div>
+      <div class="exhibition-area animate__animated animate__slideInRight" v-else>
+        <div class="item" :showList="showList" v-for="item in showList" :key="item.id">
+          <showItem :baseURL="baseURL" :item="item" />
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
 import 'animate.css'
-import getData from '@/services/getData.js'
-import axios from 'axios'
+import showItem from './ShowItem.vue'
+import { getData } from '@/services/get.js'
 export default {
   data () {
     return {
       show: true,
-      showList: [1, 2]
+      showList: [],
+      name: '',
+      baseURL: 'http://www.manati.cn/public'
     }
   },
-  created () {
-    axios({
-      url:
-        'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticle',
-      data: { type: 2, page: 1, limit: 5 },
-      method: 'post'
-    }).then(res => {
-      console.log(res.data)
-      return res.data
-    })
+  beforeMount () {
+    this.changePage(name)
   },
+  components: { showItem },
   methods: {
-    changePage (data) {
+    async changePage (data) {
+      this.name = data
       if (data === 'Health') {
         this.show = false
-        const res = getData.getData(
-          'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticle',
-          { data: { type: 2, page: 1, limit: 5 }, method: 'post' }
-        )
-        console.log(res)
+        const res = await getData({
+          method: 'post',
+          baseURL: this.baseURL,
+          url: '/index.php/plugin/home_configuration/api_index/getArticle',
+          data: { type: 2, page: 1, limit: 5 }
+        })
+        this.showList = res.data.data
+        // console.log(this.showList)
       } else {
         this.show = true
-        const res = getData.getData(
-          'http://www.manati.cn/public/index.php/plugin/home_configuration/api_index/getArticle',
-          { data: { type: 1, page: 1, limit: 5 }, method: 'post' }
-        )
-        console.log(res)
+        const res = await getData({
+          method: 'post',
+          baseURL: this.baseURL,
+          url: '/index.php/plugin/home_configuration/api_index/getArticle',
+          data: { type: 1, page: 1, limit: 5 }
+        })
+        this.showList = res.data.data
+        // console.log(res.data.data)
       }
     }
   }
@@ -81,7 +89,6 @@ export default {
 } */
 .exhibition-area {
   height: 13rem;
-  /* background-color: rgba(65, 5, 12, 0.1); */
 }
 
 .introduce span {
@@ -92,7 +99,7 @@ export default {
 .animate__animated {
   --animate-duration: 0.3s;
 }
-.exhibition-area div {
+.exhibition-area .item {
   width: 100%;
   height: 6rem;
   margin: 0.4rem 0;
