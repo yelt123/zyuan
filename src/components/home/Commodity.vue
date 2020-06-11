@@ -33,7 +33,7 @@ export default {
   background-color: #fff;
   height: 6rem;
   position: relative;
-  padding-top: .5rem;
+  margin: 1rem 0;
 }
 
 </style>

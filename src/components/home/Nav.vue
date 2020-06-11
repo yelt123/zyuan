@@ -38,9 +38,9 @@ export default {
   font-size: 1rem;
   color: #323232;
   background-color: #fff;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
 }
-.nav > div.router-link-exact-active  {
+.nav > div.router-link-exact-active {
   color: red;
 }
 </style>

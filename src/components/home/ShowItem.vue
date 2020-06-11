@@ -43,7 +43,6 @@ export default {
 .right {
   position: relative;
   left: 20px;
-  top: -10px;
 }
 .right .show-title {
   color: rgb(85, 83, 83);

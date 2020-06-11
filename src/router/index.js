@@ -1,16 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import defaultPage from '@/layout/Home'
-import profile from '@/layout/Profile'
-import cart from '@/layout/Cart'
-import Agent from '@/components/profile/tool/Agent.vue'
-import Address from '@/components/profile/tool/Address.vue'
-import Extension from '@/components/profile/tool/Extension.vue'
-import Message from '@/components/profile/tool/Message.vue'
-import Security from '@/components/profile/tool/Security.vue'
-import Wallet from '@/components/profile/tool/Wallet.vue'
-import ProxyRecord from '@/components/profile/tool/ProxyRecord.vue'
-import AddMessage from '@/components/profile/tool/AddMessage.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -18,51 +7,56 @@ export default new Router({
     path: '/',
     name: 'Home',
     alias: '/Home',
-    component: defaultPage
+    component: () => import('@/layout/Home')
   }, {
     path: '/Profile',
     name: 'Profile',
-    component: profile
+    component: () => import('@/layout/Profile')
 
   }, {
     path: '/Cart',
     name: 'Cart',
-    component: cart
+    component: () => import('@/layout/Cart')
   }, {
     path: '/Agent',
     name: 'Agent',
-    component: Agent
+    component: () => import('@/components/profile/tool/Agent.vue')
   }, {
     path: '/Address',
     name: 'Address',
-    component: Address
+    component: () => import('@/components/profile/tool/Address.vue')
   }, {
     path: '/Extension',
     name: 'Extension',
-    component: Extension
+    component: () => import('@/components/profile/tool/Extension.vue')
   }, {
     path: '/Message',
     name: 'Message',
-    component: Message
+    component: () => import('@/components/profile/tool/Message.vue')
   }, {
     path: '/Security',
     name: 'Security',
-    component: Security
+    component: () => import('@/components/profile/tool/Security.vue')
   },
   {
     path: '/Wallet',
     name: 'Wallet',
-    component: Wallet
+    component: () => import('@/components/profile/tool/Wallet.vue')
   },
   {
     path: '/ProxyRecord',
     name: 'ProxyRecord',
-    component: ProxyRecord
+    component: () => import('@/components/profile/tool/ProxyRecord.vue')
   },
   {
     path: '/AddMessage',
     name: 'AddMessage',
-    component: AddMessage
+    component: () => import('@/components/profile/tool/AddMessage.vue')
+  },
+  {
+    path: '/IntroductionDetails/:id',
+    name: 'IntroductionDetails',
+    component: () => import('@/components/home/IntroductionDetails.vue')
   }
   ]
 })
