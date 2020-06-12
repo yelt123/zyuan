@@ -11,6 +11,14 @@ export default {
   components: {
     home,
     bottomNav
+  },
+  created () {
+    this.pathType()
+  },
+  methods: {
+    pathType () {
+      console.log(this.$route)
+    }
   }
 }
 </script>

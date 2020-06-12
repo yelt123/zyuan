@@ -1,36 +1,51 @@
 <template>
-  <div class="show-box">
-    <div class="left">
-      <img v-if="item.goodsimg" :src="item.goodsimg" />
-      <img v-else-if="item.thumb" :src="baseURL+item.thumb" />
+  <keep-alive>
+    <div class="show-box" v-cloak>
+      <router-link class="link" tag="div" :to="{name:clickType,params:{id:item.id}}">
+        <div class="left">
+          <img v-if="item.goodsimg" :src="item.goodsimg" />
+          <img v-else-if="item.thumb" :src="baseURL+item.thumb" />
+        </div>
+        <div class="right">
+          <div class="show-title">{{(item.title||item.goodsname)}}</div>
+          <div class="show-desc">{{(item.desc||item.goodsdesc)}}</div>
+          <div class="price">{{item.shopprice}}</div>
+        </div>
+      </router-link>
     </div>
-    <div class="right">
-      <div class="show-title">{{(item.title||item.goodsname)}}</div>
-      <div class="show-desc">{{(item.desc||item.goodsdesc)}}</div>
-      <div class="price">{{item.shopprice}}</div>
-    </div>
-  </div>
+  </keep-alive>
 </template>
 <script>
 export default {
+  data: function () {
+    return { pageList: [] }
+  },
   props: {
     baseURL: { type: String, required: true },
     item: { type: Array | Object, required: true }
   },
-  //   created () {},
-  updated () {
-    // console.log(this.item)
+  computed: {
+    clickType () {
+      if (this.item.goodsname) {
+        return 'Shop'
+      } else if (this.item.desc) {
+        return 'IntroductionDetails'
+      }
+    }
+  },
+
+  mounted () {
+    console.log(this.item)
   }
 }
 </script>
 <style scoped>
-.show-box {
+.link {
   position: relative;
   display: flex;
   width: 100%;
   height: 5rem;
   padding: 0rem 1.5rem;
-
   top: 0.5rem;
   align-items: center;
 }

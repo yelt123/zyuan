@@ -29,11 +29,14 @@ export default {
       show: true,
       showList: [],
       name: '',
-      baseURL: 'http://www.manati.cn/public'
+      baseURL: 'http://www.manati.cn/public',
+      url: '/index.php/plugin/home_configuration/api_index/getArticle',
+      method: 'post'
     }
   },
-  beforeMount () {
-    this.changePage(name)
+  created () {
+    this.changePage()
+    // console.log(this.showList)
   },
   components: { showItem },
   methods: {
@@ -42,24 +45,24 @@ export default {
       if (data === 'Health') {
         this.show = false
         const res = await getData({
-          method: 'post',
+          method: this.method,
           baseURL: this.baseURL,
-          url: '/index.php/plugin/home_configuration/api_index/getArticle',
+          url: this.url,
           data: { type: 2, page: 1, limit: 5 }
         })
         this.showList = res.data.data
-        // console.log(this.showList)
       } else {
         this.show = true
         const res = await getData({
-          method: 'post',
+          method: this.method,
           baseURL: this.baseURL,
-          url: '/index.php/plugin/home_configuration/api_index/getArticle',
+          url: this.url,
           data: { type: 1, page: 1, limit: 5 }
         })
         this.showList = res.data.data
         // console.log(res.data.data)
       }
+      // console.log(this.showList)
     }
   }
 }

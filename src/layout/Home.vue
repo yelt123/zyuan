@@ -1,12 +1,14 @@
 <template>
-  <div class="contain">
-    <search />
-    <div class="center">
-      <carousel />
-      <showcase />
-      <commodity />
+  <keep-alive>
+    <div class="contain">
+      <search />
+      <div class="center">
+        <carousel />
+        <showcase />
+        <commodity />
+      </div>
     </div>
-  </div>
+  </keep-alive>
 </template>
 <script>
 import search from '@/components/home/Search'

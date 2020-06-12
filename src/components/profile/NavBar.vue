@@ -24,7 +24,7 @@
           />
         </svg>
       </span>
-      <span class="title">{{name}}</span>
+      <span class="nav-bar-title">{{name}}</span>
       <span class="right" @click="noClickrRight(logo)">{{logo}}</span>
     </div>
   </div>
@@ -67,7 +67,7 @@ export default {
   top: 8px;
   left: 5px;
 }
-.title {
+.nav-bar-title   {
   display: inline-block;
   position: absolute;
   top: 50%;

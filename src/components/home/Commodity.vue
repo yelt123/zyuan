@@ -1,6 +1,8 @@
 <template>
   <div class="commodity">
-    <show-item :item="showList" :baseURL="baseURL" />
+    <div v-for="item in showList" :key="item.id">
+      <show-item :item="item" :baseURL="baseURL" />
+    </div>
   </div>
 </template>
 <script>
@@ -9,7 +11,7 @@ import { getData } from '@/services/get.js'
 export default {
   data () {
     return {
-      showList: {},
+      showList: [],
       baseURL: 'http://www.manati.cn/public'
     }
   },
@@ -20,7 +22,7 @@ export default {
         baseURL: this.baseURL,
         url: '/index.php/plugin/goods/api_index/goodslist'
       })
-      this.showList = res.data
+      this.showList.push(res.data)
     }
   },
   created () {
@@ -35,5 +37,4 @@ export default {
   position: relative;
   margin: 1rem 0;
 }
-
 </style>
