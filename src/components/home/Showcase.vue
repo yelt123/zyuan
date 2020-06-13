@@ -1,22 +1,24 @@
 <template>
-  <div class="showcase">
-    <div class="introduce container">
-      <span class="Recommend col-6" @click.passive="changePage('Recommend')">企业简介</span>
-      <span class="Health col-6" @click.passive="changePage('Health')">疾病与健康</span>
-    </div>
-    <div class="box">
-      <div class="exhibition-area animate__animated animate__slideInLeft" v-if="show">
-        <div class="item" :showList="showList" v-for="item in showList" :key="item.id">
-          <show-item :baseURL="baseURL" :item="item" />
+
+    <div class="showcase">
+      <div class="introduce container">
+        <span class="Recommend col-6" @click.passive="changePage('Recommend')">企业简介</span>
+        <span class="Health col-6" @click.passive="changePage('Health')">疾病与健康</span>
+      </div>
+      <div class="box">
+        <div class="exhibition-area animate__animated animate__slideInLeft" v-if="show">
+          <div class="item" :showList="showList" v-for="item in showList" :key="item.id">
+            <show-item :baseURL="baseURL" :item="item" />
+          </div>
+        </div>
+        <div class="exhibition-area animate__animated animate__slideInRight" v-else>
+          <div class="item" :showList="showList" v-for="item in showList" :key="item.id">
+            <showItem :baseURL="baseURL" :item="item" />
+          </div>
         </div>
       </div>
-      <div class="exhibition-area animate__animated animate__slideInRight" v-else>
-        <div class="item" :showList="showList" v-for="item in showList" :key="item.id">
-          <showItem :baseURL="baseURL" :item="item" />
-        </div>
-      </div>
     </div>
-  </div>
+
 </template>
 
 <script>

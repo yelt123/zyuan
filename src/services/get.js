@@ -1,5 +1,22 @@
+import Vue from 'vue'
 import axios from 'axios'
+axios.defaults.baseURL = 'http://www.manati.cn/public'
+axios.defaults.timeout = 1000
+Vue.prototype.$axios = axios
 
+axios.interceptors.response.use(response => {
+  // if (response.headers['content-type'] === 'text/html') {
+  //   response.headers['content-type'] = 'text/css'
+  // }
+
+  // console.log(response)
+  return response
+})
+axios.interceptors.request.use(request => {
+  // request.headers['content-type'] = 'text/css'
+  // console.log(request)
+  return request
+})
 /**
  *
  * @param {obj} obj

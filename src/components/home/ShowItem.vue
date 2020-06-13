@@ -1,7 +1,7 @@
 <template>
   <keep-alive>
     <div class="show-box" v-cloak>
-      <router-link class="link" tag="div" :to="{name:clickType,params:{id:item.id}}">
+      <router-link class="link" :shopId='shopId' tag="div" :to="{name:clickType,params:{id:item.id}}">
         <div class="left">
           <img v-if="item.goodsimg" :src="item.goodsimg" />
           <img v-else-if="item.thumb" :src="baseURL+item.thumb" />
@@ -17,8 +17,8 @@
 </template>
 <script>
 export default {
-  data: function () {
-    return { pageList: [] }
+  data () {
+    return { shopId: this.item.id }
   },
   props: {
     baseURL: { type: String, required: true },
