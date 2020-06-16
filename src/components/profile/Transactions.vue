@@ -29,6 +29,7 @@ export default {
 @import "../../assets/css/profile-icon/iconfont.css";
 .transactions {
   height: 15%;
+  width: 100%;
   position: relative;
 }
 .transactions .transactions-box {
@@ -48,18 +49,18 @@ export default {
   flex: 1;
   display: flex;
   justify-content: center;
+  text-align: center;
   list-style: none;
   display: inline-block;
   padding-top: 6px;
 }
 .transactions-box ul li span {
-  color: red;
+   color: red;
   font-size: 22px;
   font-weight: 800;
 }
 .transactions-box ul li div {
   font-size: 14px;
   color: rgb(107, 104, 104);
-  transform: translateX(-5px);
 }
 </style>

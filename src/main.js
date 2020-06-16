@@ -3,11 +3,24 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 
-Vue.use(ElementUI)
+import {
+  Switch,
+  Field,
+  Button,
+  Form,
+  Area,
+  AddressEdit,
+  Popup
+} from 'vant'
 
+Vue.use(Button)
+Vue.use(Switch)
+Vue.use(Field)
+Vue.use(Area)
+Vue.use(Form)
+Vue.use(Popup)
+Vue.use(AddressEdit)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

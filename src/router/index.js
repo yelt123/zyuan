@@ -24,7 +24,9 @@ export default new Router({
   }, {
     path: '/Address',
     name: 'Address',
-    component: () => import('@/components/profile/tool/Address.vue')
+
+    component: () => import('@/components/profile/tool/Address.vue'),
+    props: true
   }, {
     path: '/Extension',
     name: 'Extension',
@@ -62,6 +64,12 @@ export default new Router({
     path: '/Shop/:id',
     name: 'Shop',
     component: () => import('@/components/home/Shop.vue'),
+    props: true
+  },
+  {
+    path: '/EditAddress',
+    name: 'EditAddress',
+    component: () => import('@/components/profile/tool/EditAddress.vue'),
     props: true
   }
   ]

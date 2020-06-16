@@ -16,6 +16,6 @@ export default {
 .agent {
   width: 100%;
   height: 37.6rem;
-  background-color: rgba(109, 106, 106, 0.2);
+  background-color: rgba(131, 128, 128, 0.1);
 }
 </style>
