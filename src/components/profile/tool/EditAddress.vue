@@ -35,11 +35,10 @@
         <!-- div. -->
       </div>
     </div>
-    <router-link to='/Address'>
-      <div class="a-message-bottom">
-        <van-button @click="commit" class="btn" type="danger">保存</van-button>
-      </div>
-    </router-link>
+
+    <div class="a-message-bottom">
+      <van-button @click="commit" class="btn" type="danger">保存</van-button>
+    </div>
   </div>
 </template>
 <script>
@@ -49,12 +48,29 @@ export default {
   methods: {
     commit () {
       let { value, address, userName, userPhone, post } = this
-      if (!value || !address || !userName || !userPhone || !post) {
+      if (!value || !address || !userName || !userPhone) {
         alert('输入有误')
         return false
       }
+      this.$axios({
+        url: '/index.php/plugin/member_address/apiIndex/addAddress',
+        method: 'post',
+        data: {
+          uid: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImV4cCI6MTU5MjM0MTQ5MiwianRpIjoiSWpNME1HTXdOemhoT0dObU1HSmpZalF5WVRrM1pUWm1PV1UyTW1ZMU5EazVJZy5JbUpoTURkbE5ESm1ORE5rTVRnMk1EWTROVFJtTUdZeE1qZ3dNR1UzWWpNMklnLkJGclc4NEdDbkQ0X0VlQ3FiN3Fpd1BKd0dJd3hUV3BFYzB2WXNCZ2Z0ZkkifQ.SOeK1WlfclebMI2xdquMLHfr3KCCfrQuIFcszgBDlVY',
+          receive_name: userName,
+          receive_phone: userPhone,
+          cri_code: 110101,
+          cri_name: value[2],
+          address: address,
+          postal_code: post,
+          is_default: 1
+        }
+      })
       this.showAddress = { value, address, userName, userPhone, post }
-
+      this.$router.push({
+        name: 'Address',
+        params: { userAdd: this.showAddress }
+      })
       console.log(this.showAddress, this.$route.params)
     },
     onConfirm (values) {

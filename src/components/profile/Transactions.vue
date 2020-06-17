@@ -3,8 +3,10 @@
     <div class="transactions-box">
       <ul>
         <li v-for="item in transactionsList" :key="item.id">
-          <span class="iconfont" :class="item.icon"></span>
-          <div>{{item.title}}</div>
+          <router-link :to="{name:'Order',params:{type : item.id }}">
+            <span class="iconfont" :class="item.icon"></span>
+            <div>{{item.title}}</div>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -55,7 +57,7 @@ export default {
   padding-top: 6px;
 }
 .transactions-box ul li span {
-   color: red;
+  color: red;
   font-size: 22px;
   font-weight: 800;
 }

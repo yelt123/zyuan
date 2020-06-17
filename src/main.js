@@ -11,8 +11,14 @@ import {
   Form,
   Area,
   AddressEdit,
-  Popup
+  Popup,
+  Tab,
+  Tabs,
+  List
 } from 'vant'
+Vue.use(List)
+Vue.use(Tab)
+Vue.use(Tabs)
 
 Vue.use(Button)
 Vue.use(Switch)
@@ -22,7 +28,13 @@ Vue.use(Form)
 Vue.use(Popup)
 Vue.use(AddressEdit)
 Vue.config.productionTip = false
-
+router.beforeEach((to, from, next) => {
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

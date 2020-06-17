@@ -34,7 +34,10 @@ export default {
   data () {
     return {}
   },
-  props: ['logo', 'name'],
+  props: {
+    logo: { require: true },
+    name: { require: true }
+  },
   methods: {
     onclick () {
       this.$router.go(-1)
@@ -67,7 +70,7 @@ export default {
   top: 8px;
   left: 5px;
 }
-.nav-bar-title   {
+.nav-bar-title {
   display: inline-block;
   position: absolute;
   top: 50%;
