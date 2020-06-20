@@ -23,15 +23,11 @@ export default {
     showcase,
     commodity
   },
+
+  props: { userId: { type: Object } },
   created () {
-    // (async function () {
-    //   await getData({
-    //     method: 'post',
-    //     baseURL: 'http://www.manati.cn/public',
-    //     url: '/index.php/plugin/home_configuration/api_index/getArticle',
-    //     data: { type: 1, page: 1, limit: 5 }
-    //   })
-    // })()
+    console.log(this.userId)
+    // console.log( )
   }
 }
 </script>

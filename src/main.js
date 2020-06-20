@@ -36,11 +36,15 @@ router.beforeEach((to, from, next) => {
   next()
 })
 /* eslint-disable no-new */
+var Bus = new Vue()
 new Vue({
   el: '#app',
   router,
   components: {
     App
+  },
+  data: {
+    Bus
   },
   template: '<App/>'
 })

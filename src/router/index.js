@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import auth from '@/utils/auth.js'
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [{
     path: '/',
     name: 'Home',
@@ -10,7 +11,8 @@ export default new Router({
     meta: {
       title: '首页'
     },
-    component: () => import('@/layout/Home')
+    component: () => import('@/layout/Home'),
+    props: true
   }, {
     path: '/Profile',
     meta: {
@@ -120,6 +122,31 @@ export default new Router({
       title: '订单中心'
     },
     component: () => import('@/components/profile/transactions/Order.vue')
+  },
+  {
+    path: '/Login',
+    name: 'Login',
+    meta: {
+      title: '用户登录',
+      requireLogin: true
+    },
+    component: () => import('@/layout/Login.vue')
   }
   ]
 })
+router.beforeEach((to, from, next) => {
+  // 查看该路由内是否不需要验证登录
+  const isRequiresLogin = to.matched.some(item => item.meta.requireLogin)
+  if (isRequiresLogin) {
+    next()
+  } else {
+    const res = auth.isLogin()
+    if (res) {
+      next()
+    } else {
+      const isLogin = window.confirm('是否登录')
+      isLogin ? next('/Login') : next(false)
+    }
+  }
+})
+export default router
