@@ -39,7 +39,6 @@ export default {
       if (res.data.status === 'success' && res.data.code === 200) {
         this.userData = res.data
         auth.setLogin()
-        console.log(res.data)
         this.$router.push({
           name: 'Home',
           params: { userId: this.userData.data }

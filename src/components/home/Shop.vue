@@ -41,6 +41,7 @@
 </template>
 <script>
 import shopBottom from './shopBottom'
+
 export default {
   components: {
     shopBottom
@@ -53,6 +54,7 @@ export default {
   props: { id: { type: [Number, String] } },
   created () {
     this.getData()
+    console.log(this.$store.state)
   },
   methods: {
     backPage () {
@@ -64,8 +66,7 @@ export default {
         method: 'post',
         data: {
           id: this.id,
-          uid:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImV4cCI6MTU5MjI1NDMzNSwianRpIjoiSWpNME1HTXdOemhoT0dObU1HSmpZalF5WVRrM1pUWm1PV1UyTW1ZMU5EazVJZy5JbUpoTURkbE5ESm1ORE5rTVRnMk1EWTROVFJtTUdZeE1qZ3dNR1UzWWpNMklnLkJGclc4NEdDbkQ0X0VlQ3FiN3Fpd1BKd0dJd3hUV3BFYzB2WXNCZ2Z0ZkkifQ.EqVi5o2rOBSSKDIcUTRtsjSByG7snextzXF86eQBJGY'
+          uid: this.$store.state.userData.uid
         }
       })
       console.log(res.data.data)

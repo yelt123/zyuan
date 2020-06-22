@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import store from './store.js'
 import {
   Switch,
   Field,
@@ -35,6 +35,7 @@ router.beforeEach((to, from, next) => {
   }
   next()
 })
+
 /* eslint-disable no-new */
 var Bus = new Vue()
 new Vue({
@@ -46,5 +47,6 @@ new Vue({
   data: {
     Bus
   },
+  store,
   template: '<App/>'
 })

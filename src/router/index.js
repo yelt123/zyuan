@@ -141,6 +141,7 @@ router.beforeEach((to, from, next) => {
     next()
   } else {
     const res = auth.isLogin()
+    // console.log(res)
     if (res) {
       next()
     } else {
