@@ -1,6 +1,8 @@
 <template>
   <div class="defaultPage">
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
     <bottom-nav v-show="statusComputed" />
   </div>
 </template>
@@ -19,6 +21,10 @@ export default {
   },
   beforeUpdate () {
     // console.log(this.$route.name, this.statusWatch)
+  },
+  mounted () {
+    document.getElementById('app').style.display = 'block'
+    document.getElementById('appLoading').style.display = 'none'
   },
   computed: {
     statusComputed () {

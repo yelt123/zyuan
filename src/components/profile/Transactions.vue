@@ -5,7 +5,7 @@
         <li v-for="item in transactionsList" :key="item.id">
           <router-link :to="{name:'Order',params:{type : item.id }}">
             <span class="iconfont" :class="item.icon"></span>
-            <div>{{item.title}}</div>
+            <div @click="handleClick">{{item.title}}</div>
           </router-link>
         </li>
       </ul>
@@ -14,6 +14,11 @@
 </template>
 <script>
 export default {
+  methods: {
+    handleClick () {
+      // this.$store.state.uData.uid = null
+    }
+  },
   data () {
     return {
       transactionsList: [

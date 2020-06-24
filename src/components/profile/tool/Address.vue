@@ -19,7 +19,6 @@
 <script>
 import myNav from '../NavBar'
 export default {
-
   created () {
     this.getData()
   },
@@ -35,8 +34,7 @@ export default {
         url: '/index.php/plugin/member_address/apiIndex/getAddressList',
         method: 'post',
         data: {
-          uid:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImV4cCI6MTU5MjM0MTQ5MiwianRpIjoiSWpNME1HTXdOemhoT0dObU1HSmpZalF5WVRrM1pUWm1PV1UyTW1ZMU5EazVJZy5JbUpoTURkbE5ESm1ORE5rTVRnMk1EWTROVFJtTUdZeE1qZ3dNR1UzWWpNMklnLkJGclc4NEdDbkQ0X0VlQ3FiN3Fpd1BKd0dJd3hUV3BFYzB2WXNCZ2Z0ZkkifQ.SOeK1WlfclebMI2xdquMLHfr3KCCfrQuIFcszgBDlVY'
+          uid: this.$store.state.uData.uid
         }
       })
 

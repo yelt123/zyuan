@@ -1,28 +1,61 @@
 <template>
-  <div class="user-info">
+  <div class="user-info" keep-alive>
     <div class="top-info">
       <div class="left">
-        <img
-          src="http://www.manati.cn//public/plugins/member/view/public/image/header/20200608/1591619635w5UplP_thumb_150.png"
-          alt
-        />
-        <div class="name">昵称</div>
+        <img :src="userData.avatar" />
+        <div class="name">{{userData.nickname}}</div>
         <div class="box">
-          <div class="balance">￥0.00元</div>
+          <div class="balance">￥{{userData.amount}}元</div>
         </div>
       </div>
       <div class="right">
-        <span class="iconfont icon-shezhi"></span>
+        <router-link :to="{name:'Setting',query:{userData:this.userData}}" tag="div">
+          <span class="iconfont icon-shezhi"></span>
+        </router-link>
       </div>
     </div>
     <div class="bottom-info">
       <div class="icon">
         <span class="iconfont icon-aixin"></span>
-        <span>爱心值51</span>
+        <span>爱心值{{userData.loveNum}}</span>
       </div>
     </div>
   </div>
 </template>
+<script>
+import { getData } from '@/services/get.js'
+import { GET_PERSONALDATA } from '@/store/mutation-types'
+export default {
+  data () {
+    return {
+      userData: ''
+    }
+  },
+  created () {
+    this.getUserData()
+  },
+  mounted () {},
+  methods: {
+    async getUserData () {
+      const res = await getData({
+        method: 'post',
+        url: '/index.php/plugin/member/api_index/personalData',
+        data: {
+          field: 'nickname,avatar,mobile,loveNum,integral,amount,real_name',
+          uid: this.$store.state.uData.uid
+        }
+      })
+
+      this.userData = res.data
+
+      this.$store.commit({
+        type: GET_PERSONALDATA,
+        data: this.userData
+      })
+    }
+  }
+}
+</script>
 <style scoped>
 @import "../../assets/css/profile-icon/iconfont.css";
 

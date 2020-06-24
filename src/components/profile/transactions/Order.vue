@@ -1,8 +1,7 @@
 <template>
   <div class="Order">
     <nav-bar :name="name" />
-    <!-- <keep-alive> -->
-    <van-tabs v-model="active" class="item-box">
+    <van-tabs v-model="active" @click="onClick" class="item-box">
       <van-tab title="全部" class="item">
         <div class="shop-item" v-for="(item,index) in shopList" :key="index">
           <div class="item-top">
@@ -28,7 +27,6 @@
       <van-tab title="待收货">内容 4</van-tab>
       <van-tab title="已完成">内容 5</van-tab>
     </van-tabs>
-    <!-- </keep-alive> -->
   </div>
 </template>
 <script>
@@ -54,26 +52,28 @@ export default {
   },
 
   methods: {
+    onClick (name, title) {
+      console.log(name, title)
+    },
     async getData () {
       const res = await this.$axios({
         method: 'post',
         url: '/index.php/plugin/order/api_index/allOrder',
         data: {
-          uid:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImV4cCI6MTU5MjQyNzE3OCwianRpIjoiSWpNME1HTXdOemhoT0dObU1HSmpZalF5WVRrM1pUWm1PV1UyTW1ZMU5EazVJZy5JbUpoTURkbE5ESm1ORE5rTVRnMk1EWTROVFJtTUdZeE1qZ3dNR1UzWWpNMklnLkJGclc4NEdDbkQ0X0VlQ3FiN3Fpd1BKd0dJd3hUV3BFYzB2WXNCZ2Z0ZkkifQ.Ib5u5bhwGVwMX7aYxE5OHto1DVco8XFaYCTLTeXM-8I',
+          uid: this.$store.state.uData.uid,
           status: this.active + 1,
           page: 1,
           pageNum: 10
         }
       })
       this.shopList = res.data.data
-      //   this.changeStatus()
-      // console.log(res.data.data)
     }
   },
   created () {
-    this.active = this.$route.params.type - 1
     this.getData()
+  },
+  activated () {
+    this.active = this.$route.params.type - 1
   }
 }
 </script>

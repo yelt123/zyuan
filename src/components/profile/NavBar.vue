@@ -15,12 +15,12 @@
           <path
             d="M256.05 512.904l322.21-322.646 45.119 45.204-322.21 322.646z"
             p-id="5162"
-            fill="#1296db"
+            :fill="color"
           />
           <path
             d="M301.189 467.719l316.599 317.035-45.12 45.203-316.599-317.035z"
             p-id="5163"
-            fill="#1989fa"
+            :fill="color"
           />
         </svg>
       </span>
@@ -32,7 +32,12 @@
 <script>
 export default {
   data () {
-    return {}
+    return {
+      color: '#1989fa'
+    }
+  },
+  created () {
+    this.color = this.$route.path === '/wallet' ? '#fff' : '#1989fa'
   },
   props: {
     logo: { require: true },
@@ -53,6 +58,9 @@ export default {
           this.$router.push({
             path: '/AddMessage'
           })
+          break
+        case '刷新':
+          this.$router.go(0)
       }
     }
   }

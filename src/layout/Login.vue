@@ -17,7 +17,7 @@
 </template>
 <script>
 import auth from '@/utils/auth.js'
-
+import { GET_USERDATA } from '@/store/mutation-types'
 export default {
   methods: {
     async handleClick () {
@@ -37,12 +37,22 @@ export default {
       })
 
       if (res.data.status === 'success' && res.data.code === 200) {
-        this.userData = res.data
+        // this.$store.state.uData = res.data.data
+        // 'getUserData', {data: res.data.data}
+        this.$store.commit({
+          type: GET_USERDATA,
+          data: res.data.data
+        })
         auth.setLogin()
         this.$router.push({
-          name: 'Home',
-          params: { userId: this.userData.data }
+          name: 'Home'
         })
+        // this.userData = res.data
+        // auth.setLogin()
+        // this.$router.push({
+        //   name: 'Home',
+        //   params: { userId: this.userData.data }
+        // })
       } else if (res.data.status === 'error' && res.data.code === -1) {
         this.message = res.data.message
       } else if (res.data.status === 'error' && res.data.code === -3) {
@@ -59,6 +69,7 @@ export default {
   },
 
   created () {
+    window.localStorage.clear()
     this.getData()
   },
   beforeUpdate () {
@@ -85,7 +96,7 @@ export default {
   },
   computed: {
     btnText () {
-      return this.isLogin ? '取消登录' : '登录'
+      return this.$store.state.uData.is_real ? '取消登录' : '登录'
     }
   }
 }

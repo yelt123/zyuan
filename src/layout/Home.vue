@@ -26,9 +26,9 @@ export default {
 
   props: { userId: { type: Object } },
   created () {
-    console.log(this.userId)
-    console.log(this.$route)
-    console.log(this.$store.state)
+    // console.log(this.userId)
+    // console.log(this.$route)
+    // console.log(this.$store.state)
     // console.log( )
   }
 }

@@ -54,7 +54,6 @@ export default {
   props: { id: { type: [Number, String] } },
   created () {
     this.getData()
-    console.log(this.$store.state)
   },
   methods: {
     backPage () {
@@ -66,10 +65,9 @@ export default {
         method: 'post',
         data: {
           id: this.id,
-          uid: this.$store.state.userData.uid
+          uid: this.$store.state.uData.uid
         }
       })
-      console.log(res.data.data)
       this.shopData = res.data.data
     }
   }

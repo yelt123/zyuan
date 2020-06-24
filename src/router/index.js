@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import auth from '@/utils/auth.js'
+// import auth from '@/utils/auth.js'
+import store from '../store'
 Vue.use(Router)
 
 const router = new Router({
@@ -17,6 +18,7 @@ const router = new Router({
     path: '/Profile',
     meta: {
       title: '商务中心'
+      // keepAlive: true
     },
     name: 'Profile',
     component: () => import('@/layout/Profile')
@@ -131,18 +133,37 @@ const router = new Router({
       requireLogin: true
     },
     component: () => import('@/layout/Login.vue')
+  },
+  {
+    path: '/Setting',
+    name: 'Setting',
+    meta: {
+      title: '个人设置'
+    },
+    component: () => import('@/components/profile/Setting.vue')
   }
   ]
 })
 router.beforeEach((to, from, next) => {
   // 查看该路由内是否不需要验证登录
+  // const isRequiresLogin = to.matched.some(item => item.meta.requireLogin)
+  // if (isRequiresLogin) {
+  //   next()
+  // } else {
+  //   const res = auth.isLogin()
+  //   // console.log(res)
+  //   if (res) {
+  //     next()
+  //   } else {
+  //     const isLogin = window.confirm('是否登录')
+  //     isLogin ? next('/Login') : next(false)
+  //   }
+  // }
   const isRequiresLogin = to.matched.some(item => item.meta.requireLogin)
   if (isRequiresLogin) {
     next()
   } else {
-    const res = auth.isLogin()
-    // console.log(res)
-    if (res) {
+    if (store.state.uData.uid) {
       next()
     } else {
       const isLogin = window.confirm('是否登录')

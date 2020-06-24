@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 axios.defaults.baseURL = 'http://www.manati.cn/public'
-axios.defaults.timeout = 1000
+axios.defaults.timeout = 0
 Vue.prototype.$axios = axios
 
 axios.interceptors.response.use(response => {

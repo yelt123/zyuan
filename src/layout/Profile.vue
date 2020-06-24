@@ -10,6 +10,13 @@ import tool from '@/components/profile/Tool.vue'
 import transactions from '@/components/profile/Transactions.vue'
 import userInfo from '@/components/profile/UserInfo.vue'
 export default {
+  created () {
+    console.log(this.$store.state)
+  },
+  data () {
+    return {}
+  },
+
   components: { tool, transactions, userInfo }
 }
 </script>

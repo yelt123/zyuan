@@ -9,7 +9,6 @@
 <script>
 import myNav from '../NavBar'
 import { mapState } from 'vuex'
-console.log(mapState(['count']))
 export default {
   data () {
     return { logo: '申请记录', name: '成为代理', add: false, count: 100 }
